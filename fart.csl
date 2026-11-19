@@ -169,6 +169,56 @@
               <text macro="volume-issue-pages"/>
             </group>
           </if>
+          <else-if type="software">
+            <group delimiter=" ">
+              <group delimiter=" "><text value="Hereby dubbed:" font-weight="bold"/><text variable="title"/></group>
+              <text variable="version" prefix="Version "/>
+              <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="publisher"/></group>
+              <text variable="publisher-place"/>
+            </group>
+          </else-if>
+          <else-if type="dataset">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text value="[Dataset]"/>
+              <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="publisher"/></group>
+              <text variable="version" prefix="Version "/>
+              <text variable="genre"/>
+            </group>
+          </else-if>
+          <else-if type="personal_communication">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text value="[Somebody who definitely exists]"/>
+              <text variable="medium"/>
+              <text variable="genre"/>
+            </group>
+          </else-if>
+          <else-if type="paper-conference">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text value="[Only a conference presentation tho]"/>
+              <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="event-title" font-style="italic"/></group>
+              <text variable="publisher-place"/>
+              <text variable="page" prefix="pp. "/>
+            </group>
+          </else-if>
+          <else-if type="interview">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="medium"/>
+              <names variable="interviewer"><name and="text"/></names>
+              <text variable="publisher"/>
+            </group>
+          </else-if>
+          <else-if type="post-weblog">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text value="[oh a blogger!]"/>
+              <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
+              <text macro="access-date"/>
+            </group>
+          </else-if>
           <else-if type="book">
             <group delimiter=" ">
               <text macro="title-quoted"/>
