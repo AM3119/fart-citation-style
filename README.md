@@ -1,22 +1,26 @@
 # FART — Fancy Academic Reference Thingy
 
-A multidisciplinary author–date citation style and companion tooling project.
+A multidisciplinary, author–date citation style implemented as a **standalone Zotero CSL style**.
+
+## Project rule
+
+FART will not require a companion package, plugin, external formatter, or post-processing step. Zotero's native CSL processor will generate both in-text citations and bibliographies. Features that CSL cannot express will be simplified or represented using ordinary Zotero metadata rather than delegated to separate software.
 
 ## Current status
 
-**Redesign draft 0.9.** The style includes lowercase titles, bold declaration-style prefixes (including **Published on:**), `and also` between multiple citations, full names for the first three bibliography authors, `AC` year markers, and labeled DOI/PubMed identifiers. Special labels can be supplied through Zotero's CSL `Status` variable. The Google Docs screenshot confirms the core author/title/source/DOI formatting; the remaining item-type branches require rendered fixtures. For retraction/correction labels, use the explicit Status convention documented in SPECIFICATION.md.
+**Experimental draft 0.9 — not yet complete or release-ready.** The current style has visually demonstrated its core author/title/source/DOI formatting in Google Docs. Other item-type branches, era handling, sorting, and special labels still require systematic validation. Some requirements in the specification are not currently implemented correctly.
 
-## Try it in Zotero
-
-This is an experimental redesign. The core author/title/source/DOI format has been visually confirmed in Google Docs. The companion rules include deterministic helpers for BC dates, duplicate-year suffixes, author rendering, and HTML bibliography output. They are not yet wired into Zotero's Google Docs citation integration. Revalidate and test each Zotero item type before using it in a live manuscript. Installation instructions:
+## Install for testing
 
 1. Download [fart.csl](fart.csl).
 2. In Zotero, open **Settings/Preferences → Cite → Styles**.
-3. Drag the downloaded `.csl` file into the Styles list (or use the add-style control).
-4. Select **FART — Fancy Academic Reference Thingy** in your word processor's citation style selector.
+3. Add the downloaded CSL file.
+4. Select **FART — Fancy Academic Reference Thingy** in the document's citation-style preferences.
+
+Do not use this experimental draft for a submitted manuscript until the test matrix is complete.
 
 ## Project documents
 
 - [Specification](SPECIFICATION.md)
-- [Implementation plan and limitations](IMPLEMENTATION.md)
-- [Test coverage plan](tests/README.md)
+- [Implementation audit](IMPLEMENTATION.md)
+- [Test plan](tests/README.md)
