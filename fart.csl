@@ -179,13 +179,6 @@
               <text variable="page" prefix="pp. "/>
             </group>
           </else-if>
-          <else-if type="software">
-            <group delimiter=" ">
-              <group delimiter=" "><text value="Hereby dubbed:" font-weight="bold"/><text variable="title" quotes="true" text-case="lowercase"/></group>
-              <text variable="version" prefix="version "/>
-              <text variable="publisher"/>
-            </group>
-          </else-if>
           <else-if type="patent">
             <group delimiter=" ">
               <text macro="title-quoted"/>
@@ -201,7 +194,7 @@
               <text variable="page"/>
             </group>
           </else-if>
-          <else-if type="legislation regulation bill treaty">
+          <else-if type="legislation bill">
             <group delimiter=" ">
               <group delimiter=" "><text value="Hereby dubbed:" font-weight="bold"/><text variable="title" font-style="italic" text-case="lowercase"/></group>
               <text variable="authority"/>
@@ -233,7 +226,7 @@
           <else-if type="broadcast">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <names variable="host" delimiter=", ">
+              <names variable="author" delimiter=", ">
                 <name and="text" initialize="true" initialize-with=""/>
               </names>
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
@@ -246,7 +239,7 @@
               <text macro="title-quoted"/>
               <text variable="genre"/>
               <text variable="publisher"/>
-              <text variable="event-title"/>
+
             </group>
           </else-if>
           <else>
