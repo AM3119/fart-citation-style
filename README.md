@@ -8,7 +8,7 @@ FART will not require a companion package, plugin, external formatter, or post-p
 
 ## Current status
 
-**Experimental draft 0.9 — not yet complete or release-ready.** The current style has visually demonstrated its core author/title/source/DOI formatting in Google Docs. Other item-type branches, era handling, sorting, and special labels still require systematic validation. Some requirements in the specification are not currently implemented correctly.
+**Experimental draft 0.10 — not yet complete or release-ready.** The current style has visually demonstrated its core author/title/source/DOI formatting in Google Docs. Additional native CSL branches have been added for software, datasets, personal communications, conference papers, interviews, and blog posts. Era handling, sorting, special labels, schema validation, and rendered output still require systematic validation. Some requirements in the specification are not currently implemented correctly.
 
 ## Install for testing
 
