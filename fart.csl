@@ -6,12 +6,12 @@
   <info>
     <author><name>FART project contributors</name></author>
     <category citation-format="author-date"/>
-    <id>http://www.zotero.org/styles/fart-redesign-08</id>
+    <id>http://www.zotero.org/styles/fart-redesign-09</id>
     <link href="http://www.zotero.org/styles/fart-redesign-06" rel="self"/>
     <rights license="https://creativecommons.org/licenses/by-sa/4.0/">FART project draft. Creative Commons Attribution-ShareAlike 4.0 International.</rights>
-    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.8.</summary>
+    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.9.</summary>
     <title>FART — Fancy Academic Reference Thingy</title>
-    <updated>2026-11-19T19:00:00+01:00</updated>
+    <updated>2026-11-19T19:30:00+01:00</updated>
   </info>
 
   <locale xml:lang="en-US">
@@ -50,10 +50,15 @@
 
   <macro name="issued-year">
     <group delimiter="">
+      <text value="Published on:" font-weight="bold"/>
       <date variable="issued"><date-part name="year"/></date>
       <text value=" AC"/>
       <text variable="year-suffix"/>
     </group>
+  </macro>
+
+  <macro name="fart-status">
+    <text variable="status"/>
   </macro>
 
   <macro name="status-label">
@@ -151,7 +156,7 @@
         <text value="Formulated by:" font-weight="bold"/>
         <text macro="author-long"/>
         <text macro="issued-year"/>
-        <text macro="status-label"/>
+        <text macro="fart-status"/>
         <choose>
           <if type="article-journal review">
             <group delimiter=" ">
@@ -208,6 +213,7 @@
           <else-if type="thesis">
             <group delimiter=" ">
               <text macro="title-quoted"/>
+              <text value="[Some thesis of a sort]"/>
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
@@ -215,6 +221,7 @@
           <else-if type="manuscript">
             <group delimiter=" ">
               <text macro="title-quoted"/>
+              <text value="[Only a preprint tho]"/>
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
@@ -253,12 +260,29 @@
               <text variable="publisher"/>
             </group>
           </else-if>
-          <else-if type="motion_picture song speech">
+          <else-if type="song">
             <group delimiter=" ">
               <text macro="title-quoted"/>
+              <text value="[Yap]"/>
+              <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text variable="genre"/>
               <text variable="publisher"/>
-
+            </group>
+          </else-if>
+          <else-if type="speech">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text value="[Only a conference presentation tho]"/>
+              <text variable="genre"/>
+              <text variable="publisher"/>
+            </group>
+          </else-if>
+          <else-if type="motion_picture">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text value="[Someone made a movie]"/>
+              <text variable="genre"/>
+              <text variable="publisher"/>
             </group>
           </else-if>
           <else>
