@@ -22,16 +22,17 @@ This is a limited visual confirmation, not a full compatibility test.
 - Bold labels and DOI formatting.
 - PMID/PMCID output when metadata is present.
 - URL fallback and "I guess." fallback.
-- Several source-type branches and literal Status output.
+- Native CSL branches for software, datasets, personal communications, conference papers, interviews, blog posts, podcasts, films, books, chapters, legal sources, theses, preprints, and common article/web types.
+- Zotero Status metadata is printed verbatim, allowing exact labels such as [Oops], [Corrected], [AI slop], [Only a poster tho], [Only the abstract tho], [Some dissertation of a sort], [It came to me in a dream], [I thunk this], [We thunk this], and [Not peer reviewed yet].
 
-## Known gaps and defects to fix in CSL
+## Remaining gaps and validation work
 
-1. The podcast branch currently keys off song; Zotero's actual Podcast item type must be mapped and tested rather than assumed.
-2. Video, poster, abstract, dissertation, AI, dream, thought, social-media, and personal-communication labels are not all distinguishable through the current branches. Prefer CSL item-type/variable conditions where supported; otherwise accept an explicit Zotero Status value as metadata.
-3. Retraction and correction status cannot be independently verified by CSL. The style can print supplied status metadata, but must not claim it detects retractions.
-4. Custom conversational duplicate-year suffixes are outside normal CSL year-suffix formatting. Use standard a, b, c suffixes consistently in citations and bibliography.
-5. The current hard-coded AC suffix is not a complete BC implementation. Era-aware output must be tested with negative-year CSL dates in Zotero; do not claim BC support until it passes.
-6. Software must be tested against Zotero's current CSL item-type mapping before adding a branch.
+1. Zotero's podcast mapping to CSL song is documented, but the podcast branch still needs a real Zotero fixture to confirm the output and mapped episode/show fields.
+2. Zotero maps films and general video recordings to the same CSL motion_picture type. FART cannot distinguish those labels from type alone; use the explicit Status field for [Someone made a video] when appropriate.
+3. Abstract, poster, dissertation, AI-generated content, dreams, thoughts, social posts, and correction/retraction labels require the exact label in Zotero's Status field where no unique CSL type is supplied. This is supported metadata, not automatic detection.
+4. Retraction and correction status cannot be independently verified by CSL.
+5. Custom conversational duplicate-year suffixes are outside normal CSL year-suffix formatting. Use standard a, b, c suffixes consistently in citations and bibliography.
+6. The current hard-coded AC suffix is not a complete BC implementation. Era-aware output must be tested with negative-year CSL dates; do not claim BC support until it passes.
 7. Bibliography order by first citation appearance must be verified in the target Zotero/Google Docs workflow.
 8. All branches need rendered fixtures; XML/schema validity alone is insufficient.
 
