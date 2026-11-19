@@ -35,4 +35,4 @@ Each test needs a Zotero item, expected in-text citation, expected bibliography 
 ## Rule
 For manually classified items, enter the exact label in Zotero's Extra field as `Status: [Exact label]`. For multiple applicable labels, use one Status value containing both labels in the required order. A special label must have at least one positive and one negative test. Do not infer a label from an ambiguous generic item type.
 
-All tests are performed against the standalone CSL file in Zotero's Style Editor/preview and then confirmed in Google Docs.
+Validate the style against the official CSL 1.0.2 schema before rendering tests. All tests are performed against the standalone CSL file in Zotero's Style Editor/preview and then confirmed in Google Docs.
