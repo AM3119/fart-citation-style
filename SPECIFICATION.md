@@ -85,7 +85,8 @@ Use these exact labels when the Zotero item type or supplied metadata identifies
 
 - A publication not yet peer reviewed may use [Not peer reviewed yet]; this may apply to preprints and accepted-but-not-formally-published work.
 - Retracted items should retain actual retraction information when known. CSL cannot independently verify retraction or correction status.
-- If an item type cannot distinguish a special category, an explicit Zotero Status metadata value may supply the exact label. This is metadata entry, not automatic classification.
+- If an item type cannot distinguish a special category, an explicit Zotero Status metadata value may supply the exact label. Enter the exact bracketed label in Extra as Status: [label]. This is metadata entry, not automatic classification.
+- Native CSL branches are provided for software, datasets, personal communications, conference papers, interviews, blog posts, podcasts, and films. Where Zotero maps two source types to one CSL type (for example, films and general video recordings), use Status to distinguish the desired label.
 - If both preprint and not-peer-reviewed labels apply, retain both labels in that order.
 - Open-access publications receive no special label.
 - News articles follow the ordinary format appropriate to their venue.
