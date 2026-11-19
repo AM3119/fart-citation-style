@@ -12,14 +12,14 @@ This is a living specification. Items marked **Open implementation issue** are e
 - Three or more authors: `(Smith and friends, 2026)`.
 - Separate multiple citations in one parenthesis with the exact phrase `and also`.
 - Bibliography order follows the order in which references first appear in the text, not alphabetical order.
-- Publication dates are represented by year only for ordinary publications.
+- Publication dates are represented by year only for ordinary publications. Append `AC` after Common Era years and `BC` after Before Common Era years; the era marker follows every rendered year.
 - Page numbers for direct quotations are optional.
 - Retain complete author metadata in the underlying reference record even when the rendered citation abbreviates the author group.
 
 ## 2. Author names
 
 - In the bibliography, prepend **Formulated by:** to the author list.
-- Render the first three authors using their full names (given name(s) and surname); if there are more than three authors, follow the first three with `and friends`.
+- Render the first three bibliography authors using their full given name(s) and surname, not initials; if there are more than three authors, follow the first three with `and friends`.
 - Retain compact author–date names in in-text citations; the full-name rule applies to bibliography author lists unless a later decision explicitly changes this.
 - Preserve all authors in stored metadata.
 
@@ -39,10 +39,10 @@ This is a living specification. Items marked **Open implementation issue** are e
 
 ## 4. Identifiers and links
 
-- Include DOI whenever available, in canonical `https://doi.org/...` form.
+- Include DOI whenever available, in canonical `https://doi.org/...` form, preceded by the bold prefix **Fancy identifier:**.
 - If no DOI exists but a URL does, include the URL.
 - If neither DOI nor URL exists, append exactly: `I guess.`
-- Include PMID and PMCID whenever available.
+- Include PMID and PMCID whenever available. Precede the PubMed ID (PMID) with the bold prefix **For the quacks:**.
 - Include ISBN for books whenever available.
 - Do not include ORCID.
 - Website references include an access date with the exact wording `Last time I checked:`.
