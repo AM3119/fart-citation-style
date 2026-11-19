@@ -33,7 +33,7 @@ This is a living specification. Items marked **Open implementation issue** are e
 - Cited blog posts and non-academic articles carry the exact label `[oh a blogger!]`.
 - Volume numbers are bold.
 - Include issue numbers when available.
-- Software names retain their official capitalization.
+- Software names retain their official capitalization. For Zotero's Software item type, store the version in the Version field; the companion formatter preserves the product name's case.
 
 **Implementation note:** CSL supports lowercase title casing for many fields. Special source classification (particularly distinguishing blogs/non-academic articles from scholarly web publications) may require explicit Zotero item metadata or companion tooling.
 
