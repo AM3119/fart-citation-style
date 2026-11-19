@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl"
+       version="1.0.2"
+       class="in-text"
+       default-locale="en-US">
+  <info>
+    <author><name>FART project contributors</name></author>
+    <category citation-format="author-date"/>
+    <id>http://www.zotero.org/styles/fart</id>
+    <link href="http://www.zotero.org/styles/fart" rel="self"/>
+    <rights license="https://creativecommons.org/licenses/by-sa/4.0/">FART project draft. Creative Commons Attribution-ShareAlike 4.0 International.</rights>
+    <summary>Experimental multidisciplinary author-date style. Draft 0.2; companion tooling is required for some rules.</summary>
+    <title>FART — Fancy Academic Reference Thingy</title>
+    <updated>2026-11-19T00:00:00+00:00</updated>
+  </info>
+
+  <locale xml:lang="en-US">
+    <terms>
+      <term name="and">and</term>
+      <term name="et-al">and friends</term>
+      <term name="editor" form="short">ed.</term>
+      <term name="editors" form="short">eds.</term>
+      <term name="page" form="short">p.</term>
+      <term name="page" form="short" plural="true">pp.</term>
+    </terms>
+  </locale>
+
+  <macro name="author-short">
+    <names variable="author" and="text" delimiter=", " et-al-min="3" et-al-use-first="1">
+      <name form="short"/>
+      <substitute>
+        <names variable="editor" and="text" delimiter=", " et-al-min="3" et-al-use-first="1">
+          <name form="short"/>
+        </names>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="author-long">
+    <names variable="author" and="text" delimiter=", " delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1">
+      <name name-as-sort-order="all" sort-separator=" " initialize="true" initialize-with=""/>
+      <substitute>
+        <names variable="editor" and="text" delimiter=", " delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1">
+          <name name-as-sort-order="all" sort-separator=" " initialize="true" initialize-with=""/>
+          <label form="short" prefix=" (" suffix=")"/>
+        </names>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="issued-year">
+    <group delimiter="">
+      <date variable="issued"><date-part name="year"/></date>
+      <text variable="year-suffix"/>
+    </group>
+  </macro>
+
+  <macro name="title-quoted">
+    <text variable="title" quotes="true"/>
+  </macro>
+
+  <macro name="journal-title">
+    <text variable="container-title" font-style="italic"/>
+  </macro>
+
+  <macro name="volume-issue-pages">
+    <group delimiter="">
+      <text variable="volume" font-weight="bold"/>
+      <text variable="issue" prefix="(" suffix=")"/>
+      <text variable="page" prefix=": "/>
+      <text variable="number" prefix=": "/>
+    </group>
+  </macro>
+
+  <macro name="identifiers">
+    <group delimiter="; ">
+      <text variable="PMID" prefix="PMID "/>
+      <text variable="PMCID" prefix="PMCID "/>
+    </group>
+  </macro>
+
+  <macro name="doi-or-url">
+    <choose>
+      <if variable="DOI"><text variable="DOI" prefix="https://doi.org/"/></if>
+      <else-if variable="URL"><text variable="URL"/></else-if>
+      <else><text value="I guess."/></else>
+    </choose>
+  </macro>
+
+  <macro name="access-date">
+    <choose>
+      <if variable="accessed">
+        <group delimiter=" ">
+          <text value="Last time I checked:"/>
+          <date variable="accessed">
+            <date-part name="year"/>
+            <date-part name="month" form="long" prefix=" "/>
+            <date-part name="day" prefix=" "/>
+          </date>
+        </group>
+      </if>
+    </choose>
+  </macro>
+
+  <macro name="publisher-place">
+    <group delimiter=": ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+
+  <citation disambiguate-add-year-suffix="true">
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued-year"/>
+      </group>
+    </layout>
+  </citation>
+
+  <bibliography hanging-indent="true">
+    <sort><key variable="citation-number"/></sort>
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author-long"/>
+        <text macro="issued-year"/>
+        <choose>
+          <if type="article-journal article-magazine article-newspaper review">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text macro="journal-title"/>
+              <text macro="volume-issue-pages"/>
+            </group>
+          </if>
+          <else-if type="book">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="edition" suffix=" ed."/>
+              <text macro="publisher-place"/>
+              <text variable="ISBN" prefix="ISBN "/>
+            </group>
+          </else-if>
+          <else-if type="chapter">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <group delimiter=" ">
+                <text value="In:"/>
+                <names variable="editor" and="text" delimiter=", ">
+                  <name name-as-sort-order="all" initialize="true" initialize-with=""/>
+                  <label form="short" prefix=" (" suffix=")"/>
+                </names>
+                <text variable="container-title" quotes="true"/>
+              </group>
+              <text macro="publisher-place"/>
+              <text variable="page" prefix="pp. "/>
+            </group>
+          </else-if>
+          <else-if type="software">
+            <group delimiter=" ">
+              <text variable="title" quotes="true"/>
+              <text variable="version" prefix="version "/>
+              <text variable="publisher"/>
+            </group>
+          </else-if>
+          <else-if type="patent">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="number" prefix="Patent no. "/>
+              <text variable="authority"/>
+            </group>
+          </else-if>
+          <else-if type="legal_case">
+            <group delimiter=" ">
+              <text variable="title" font-style="italic"/>
+              <text variable="authority"/>
+              <text variable="number"/>
+              <text variable="page"/>
+            </group>
+          </else-if>
+          <else-if type="legislation regulation bill treaty">
+            <group delimiter=" ">
+              <text variable="title" font-style="italic"/>
+              <text variable="authority"/>
+              <text variable="number"/>
+            </group>
+          </else-if>
+          <else-if type="thesis">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="genre"/>
+              <text variable="publisher"/>
+            </group>
+          </else-if>
+          <else-if type="manuscript">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="genre"/>
+              <text variable="publisher"/>
+            </group>
+          </else-if>
+          <else-if type="post webpage">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="container-title" font-style="italic"/>
+              <text macro="access-date"/>
+            </group>
+          </else-if>
+          <else-if type="broadcast">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <names variable="host" delimiter=", " and="text">
+                <name initialize="true" initialize-with=""/>
+              </names>
+              <text variable="container-title" font-style="italic"/>
+              <text variable="genre"/>
+              <text variable="publisher"/>
+            </group>
+          </else-if>
+          <else-if type="motion_picture song speech">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="genre"/>
+              <text variable="publisher"/>
+              <text variable="event-title"/>
+            </group>
+          </else-if>
+          <else>
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="container-title" font-style="italic"/>
+              <text variable="publisher"/>
+              <text variable="publisher-place"/>
+            </group>
+          </else>
+        </choose>
+        <text macro="identifiers"/>
+        <text macro="doi-or-url"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>
