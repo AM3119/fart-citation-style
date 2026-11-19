@@ -79,8 +79,9 @@ Use the following exact labels where the corresponding item type applies:
 | Anonymous personal communication | `[Somebody who definitely exists]` |
 
 - A publication not yet peer reviewed uses `[Not peer reviewed yet]`. This may apply to preprints and accepted-but-not-formally-published work.
-- Retracted items must still record the actual retraction status/date when known.
-- Corrected items should retain the correction information where available.
+- Retracted items must still record the actual retraction status/date when known. In Zotero's Extra field, set the CSL variable Status to the exact label [Oops].
+- Corrected items should retain the correction information where available. In Zotero's Extra field, set Status to [Corrected].
+- Other explicit status labels may be supplied through Status, including [Not peer reviewed yet] and [Only a preprint tho]; combine labels in the same value when both apply.
 - Open-access publications receive no special label.
 - News articles follow the ordinary format appropriate to their venue.
 - Forum threads use the ordinary website format.
