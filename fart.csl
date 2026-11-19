@@ -246,7 +246,15 @@
               <text macro="access-date"/>
             </group>
           </else-if>
-          <else-if type="article-magazine article-newspaper">
+          <else-if type="article-magazine">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text value="[oh a blogger!]"/>
+              <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
+              <text macro="access-date"/>
+            </group>
+          </else-if>
+          <else-if type="article-newspaper">
             <group delimiter=" ">
               <text macro="title-quoted"/>
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
