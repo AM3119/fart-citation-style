@@ -9,15 +9,15 @@
     <id>http://www.zotero.org/styles/fart-citation-style</id>
     <link href="http://www.zotero.org/styles/fart-citation-style" rel="self"/>
     <rights license="https://creativecommons.org/licenses/by-sa/4.0/">FART project draft. Creative Commons Attribution-ShareAlike 4.0 International.</rights>
-    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.11.</summary>
+    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.12.</summary>
     <title>FART — Fancy Academic Reference Thingy</title>
-    <updated>2026-11-19T21:05:00+01:00</updated>
+    <updated>2026-11-19T21:15:00+01:00</updated>
   </info>
 
   <locale xml:lang="en-US">
     <terms>
       <term name="and">and</term>
-      <term name="ad">AC</term>
+      <term name="ad">CE</term>
       <term name="bc">BC</term>
       <term name="et-al">and friends</term>
       <term name="editor" form="short"><single>ed.</single><multiple>eds.</multiple></term>
