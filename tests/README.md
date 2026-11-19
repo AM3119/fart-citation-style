@@ -8,7 +8,7 @@ Each test needs a Zotero item, expected in-text citation, expected bibliography 
 - Multiple citations separated by "and also".
 - Bibliography ordered by first citation appearance.
 - Duplicate author/year pairs, at least three; expect standard a, b, c suffixes.
-- BCE date rendering via CSL's native BC term; short CE dates should use the overridden AC term. Four-digit CE years currently lack an AC suffix because CSL cannot conditionally append it without also affecting BCE dates.
+- BCE date rendering via CSL's native BC term; short AD dates should use the native AD term. Four-digit AD years currently lack an AD suffix because CSL cannot conditionally append it without also affecting BC dates.
 - Bold date prefix and all required typography.
 
 ## Bibliographic fields
