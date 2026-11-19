@@ -23,7 +23,7 @@ test("bibliography uses full first three names and friends", () => {
     {given:"Grace",family:"Hopper"},
     {given:"Katherine",family:"Johnson"}
   ];
-  assert.equal(authorsText(authors), "Ada Lovelace, Alan Turing, Grace Hopper, and and friends");
+  assert.equal(authorsText(authors), "Ada Lovelace, Alan Turing, Grace Hopper, and friends");
 });
 
 test("labels are deduplicated but preserve order", () => {
