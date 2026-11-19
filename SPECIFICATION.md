@@ -18,7 +18,7 @@
 - Three or more authors: (Smith and friends, 2026).
 - Separate multiple citations in one parenthesis with the exact phrase "and also".
 - Bibliography order follows the order in which references first appear in the text, not alphabetical order.
-- Publication dates are represented by year only for ordinary publications. Append AC after Common Era years and BC after Before Common Era years, if this can be rendered reliably by Zotero CSL.
+- Publication dates are represented by year only for ordinary publications. CSL's native BC handling is retained; the locale's AD term is rendered as AC. CSL does not expose a reliable condition for appending AC to all four-digit CE years while excluding BCE years, so this exact all-years AC requirement remains a known CSL-only limitation.
 - Page numbers for direct quotations are optional.
 - Retain complete author metadata in the underlying reference record even when the rendered citation abbreviates the author group.
 
@@ -85,8 +85,10 @@ Use these exact labels when the Zotero item type or supplied metadata identifies
 
 - A publication not yet peer reviewed may use [Not peer reviewed yet]; this may apply to preprints and accepted-but-not-formally-published work.
 - Retracted items should retain actual retraction information when known. CSL cannot independently verify retraction or correction status.
-- If an item type cannot distinguish a special category, an explicit Zotero Status metadata value may supply the exact label. Enter the exact bracketed label in Extra as Status: [label]. This is metadata entry, not automatic classification.
-- Native CSL branches are provided for software, datasets, personal communications, conference papers, interviews, blog posts, podcasts, and films. Where Zotero maps two source types to one CSL type (for example, films and general video recordings), use Status to distinguish the desired label.
+- If an item type cannot distinguish a special category, an explicit Zotero Status metadata value may supply the exact label. Enter the exact bracketed label in Extra as Status: [label]. If two labels apply, enter both in the same Status value in the required order. This is metadata entry, not automatic classification.
+- Native CSL branches are provided for software, datasets, personal communications, conference papers, presentations, interviews, blog posts, podcasts, standards, regulations, reports, documents, book reviews, films, and other supported types. Where Zotero maps two source types to one CSL type (for example, films and general video recordings), use Status to distinguish the desired label.
+- For social posts, place display name and @handle together in the creator name when no separate CSL handle variable is available.
+- For AI-generated content, record the tool/model in publisher or other suitable source metadata and use Status: [AI slop].
 - If both preprint and not-peer-reviewed labels apply, retain both labels in that order.
 - Open-access publications receive no special label.
 - News articles follow the ordinary format appropriate to their venue.
