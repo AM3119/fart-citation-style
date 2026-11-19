@@ -4,7 +4,7 @@ A multidisciplinary author–date citation style and companion tooling project.
 
 ## Current status
 
-**Redesign draft 0.5.** The style has been revised around the new FART editorial rules: lowercase titles, bold declaration-style prefixes, `and also` between multiple citations, full names for the first three bibliography authors, and the `[oh a blogger!]` label for non-academic online writing. These changes are not yet revalidated or fully tested across Zotero item types.
+**Redesign draft 0.6.** The style has been revised around the new FART editorial rules: lowercase titles, bold declaration-style prefixes, `and also` between multiple citations, full names for the first three bibliography authors, `AC` year markers, and labeled DOI/PubMed identifiers. These changes are not yet revalidated or fully tested across Zotero item types.
 
 ## Try it in Zotero
 
