@@ -24,7 +24,7 @@ FART is one standalone CSL 1.0.2 style. No companion package, Zotero plugin, ext
 - For AI-generated material, record the tool/model in the publisher or other suitable source metadata and use Status: [AI slop].
 - Film and general video recording map to the same CSL `motion_picture` type in Zotero. Use Status: [Someone made a movie] or Status: [Someone made a video] to distinguish them.
 - A retraction or correction cannot be discovered by CSL; the relevant Status label must be supplied by the user.
-- CSL automatically renders BC for negative years and supports a localized AD term. FART overrides AD to CE. CSL does not provide a conditional test for positive years >=1000, so the current CSL cannot append CE to every modern four-digit year while avoiding an erroneous CE on BC dates. The year-era requirement is therefore only partially expressible in standalone CSL.
+- CSL automatically renders BC for negative years and supports a localized AD term. FART retains the conventional AD label. CSL does not provide a conditional test for positive years >=1000, so the current CSL cannot append CE to every modern four-digit year while avoiding an erroneous CE on BC dates. The year-era requirement is therefore only partially expressible in standalone CSL.
 - CSL standard year suffixes a, b, c are used for duplicate author/year works. Custom conversational suffixes are not available.
 - Zotero's CSL processor handles citation-number sorting; the exact Google Docs integration still needs a rendered fixture.
 
