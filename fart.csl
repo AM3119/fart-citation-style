@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0.2" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl"
        version="1.0"
        class="in-text"
@@ -6,17 +6,19 @@
   <info>
     <author><name>FART project contributors</name></author>
     <category citation-format="author-date"/>
-    <id>http://www.zotero.org/styles/fart-redesign-09</id>
-    <link href="http://www.zotero.org/styles/fart-redesign-09" rel="self"/>
+    <id>http://www.zotero.org/styles/fart-citation-style</id>
+    <link href="http://www.zotero.org/styles/fart-citation-style" rel="self"/>
     <rights license="https://creativecommons.org/licenses/by-sa/4.0/">FART project draft. Creative Commons Attribution-ShareAlike 4.0 International.</rights>
-    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.10.</summary>
+    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.11.</summary>
     <title>FART — Fancy Academic Reference Thingy</title>
-    <updated>2026-11-19T20:15:00+01:00</updated>
+    <updated>2026-11-19T20:45:00+01:00</updated>
   </info>
 
   <locale xml:lang="en-US">
     <terms>
       <term name="and">and</term>
+      <term name="ad">AC</term>
+      <term name="bc">BC</term>
       <term name="et-al">and friends</term>
       <term name="editor" form="short"><single>ed.</single><multiple>eds.</multiple></term>
       <term name="page" form="short"><single>p.</single><multiple>pp.</multiple></term>
@@ -24,15 +26,22 @@
   </locale>
 
   <macro name="author-short">
-    <names variable="author" delimiter=", ">
-      <name form="short" and="text" et-al-min="3" et-al-use-first="1"/>
-      <substitute>
-        <names variable="editor" delimiter=", ">
+    <choose>
+      <if type="personal_communication" variable="author" match="none">
+        <text value="[Somebody who definitely exists]"/>
+      </if>
+      <else>
+        <names variable="author" delimiter=", ">
           <name form="short" and="text" et-al-min="3" et-al-use-first="1"/>
+          <substitute>
+            <names variable="editor" delimiter=", ">
+              <name form="short" and="text" et-al-min="3" et-al-use-first="1"/>
+            </names>
+            <text variable="title"/>
+          </substitute>
         </names>
-        <text variable="title"/>
-      </substitute>
-    </names>
+      </else>
+    </choose>
   </macro>
 
   <macro name="author-long">
@@ -61,19 +70,26 @@
     <group delimiter="">
       <text value="Published on:" font-weight="bold"/>
       <date variable="issued"><date-part name="year"/></date>
-      <text value=" AC"/>
       <text variable="year-suffix"/>
     </group>
   </macro>
 
   <macro name="fart-status">
-    <text variable="status"/>
+    <choose>
+      <if variable="status"><text variable="status"/></if>
+      <else-if type="manuscript"></else-if>
+      <else-if type="thesis"></else-if>
+      <else-if type="song"></else-if>
+      <else-if type="post"></else-if>
+      <else-if type="post-weblog"></else-if>
+      <else-if type="speech"></else-if>
+      <else-if type="motion_picture"></else-if>
+    </choose>
   </macro>
 
   <macro name="citation-year">
     <group delimiter="">
       <date variable="issued"><date-part name="year"/></date>
-      <text value=" AC"/>
       <text variable="year-suffix"/>
     </group>
   </macro>
@@ -134,9 +150,9 @@
         <group delimiter=" ">
           <text value="Last time I checked:"/>
           <date variable="accessed">
-            <date-part name="year"/>
-            <date-part name="month" form="long" prefix=" "/>
+            <date-part name="month" form="long"/>
             <date-part name="day" prefix=" "/>
+            <date-part name="year" prefix=", "/>
           </date>
         </group>
       </if>
@@ -184,6 +200,8 @@
               <text variable="version" prefix="Version "/>
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="publisher"/></group>
               <text variable="publisher-place"/>
+              <text variable="genre"/>
+              <text variable="version" prefix="Version "/>
             </group>
           </else-if>
           <else-if type="dataset">
@@ -198,11 +216,8 @@
           <else-if type="personal_communication">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <choose>
-                <if variable="author"><names variable="author"><name and="text" delimiter=", "/></names></if>
-                <else><text value="[Somebody who definitely exists]"/></else>
-              </choose>
               <text variable="medium"/>
+              <names variable="recipient"><name and="text"/></names>
               <text variable="genre"/>
             </group>
           </else-if>
@@ -229,6 +244,30 @@
               <text value="[oh a blogger!]"/>
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text macro="access-date"/>
+            </group>
+          </else-if>
+          <else-if type="standard regulation">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="number" prefix="Standard no. "/>
+              <text variable="authority"/>
+              <text macro="publisher-place"/>
+            </group>
+          </else-if>
+          <else-if type="report document">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="genre"/>
+              <text variable="number" prefix="Report no. "/>
+              <text macro="publisher-place"/>
+            </group>
+          </else-if>
+          <else-if type="review-book">
+            <group delimiter=" ">
+              <text macro="title-quoted"/>
+              <text variable="reviewed-title" prefix="Review of "/>
+              <text macro="journal-title"/>
+              <text macro="volume-issue-pages"/>
             </group>
           </else-if>
           <else-if type="book">
