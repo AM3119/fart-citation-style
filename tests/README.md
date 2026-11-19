@@ -1,31 +1,36 @@
-# Test fixtures
+# FART rendered test plan
 
-This directory will contain small, synthetic Zotero-compatible reference records and golden expected outputs.
+Each test needs a Zotero item, expected in-text citation, expected bibliography entry, and observed output from Zotero Style Preview or Google Docs.
 
-## Minimum fixture coverage
+## Core
+- One, two, three, and four-plus authors.
+- Full first three author names in bibliography.
+- Multiple citations separated by and also.
+- Bibliography ordered by first citation appearance.
+- Duplicate author/year pairs, at least three.
+- AC and BC dates.
+- Bold date prefix once wording is decided.
 
-- One-author, two-author, and three-or-more-author citations.
-- Bibliography order by first citation appearance.
-- Multiple citations separated by semicolons.
-- Same-author-group, same-year disambiguation (at least three works).
-- Article, book, edited book, and book chapter.
-- Abstract, conference presentation, poster, thesis, dissertation, and preprint.
-- Retracted and corrected publications.
-- Software with and without a version.
-- Patent and legal document.
-- Film, standalone video, podcast episode, social media post, forum thread, and news article.
-- AI-generated content.
-- Personal communication, anonymous personal communication, dream, individual thought, and collective thought.
-- DOI present; URL-only; neither DOI nor URL.
-- PMID, PMCID, and ISBN presence.
-- Missing optional metadata and non-Latin titles/names.
+## Bibliographic fields
+- DOI, URL-only, neither.
+- PMID only, PMCID only, both, neither.
+- ISBN.
+- Journal with volume, issue, page range, article number.
+- Book, edited book, chapter, publisher/place, edition.
+- Full official journal title versus abbreviation.
 
-## Golden-output policy
+## Item-type labels
+- Blog Post versus Webpage.
+- Magazine Article and Newspaper Article (must not automatically be called blogs).
+- Forum Post versus social media post.
+- Preprint versus unpublished manuscript.
+- Abstract, Presentation, Poster.
+- Thesis versus dissertation.
+- Podcast versus radio broadcast and audio recording.
+- Film versus Video Recording.
+- Software with and without version.
+- Retracted versus corrected versus in-press journal article (positive and negative tests).
+- AI content, dream, individual thought, collective thought, personal communication.
 
-Each fixture should include:
-1. The input item metadata.
-2. The cited-in-text form.
-3. The bibliography form.
-4. Any expected warnings or documented limitations.
-
-Tests should be deterministic and should not rely on live network lookups.
+## Rule
+A special label must have at least one positive and one negative test. Do not infer a label from an ambiguous generic item type.
