@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl"
-       version="1.0.2"
+       version="1.0"
        class="in-text"
        default-locale="en-US">
   <info>
@@ -18,10 +18,8 @@
     <terms>
       <term name="and">and</term>
       <term name="et-al">and friends</term>
-      <term name="editor" form="short">ed.</term>
-      <term name="editors" form="short">eds.</term>
-      <term name="page" form="short">p.</term>
-      <term name="page" form="short" plural="true">pp.</term>
+      <term name="editor" form="short"><single>ed.</single><multiple>eds.</multiple></term>
+      <term name="page" form="short"><single>p.</single><multiple>pp.</multiple></term>
     </terms>
   </locale>
 
@@ -121,7 +119,6 @@
   </citation>
 
   <bibliography hanging-indent="true">
-    <sort><key variable="citation-number"/></sort>
     <layout suffix=".">
       <group delimiter=" ">
         <text macro="author-long"/>
