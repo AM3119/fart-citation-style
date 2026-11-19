@@ -1,0 +1,13 @@
+{
+  "name": "fart-citation-style-companion",
+  "version": "0.9.0",
+  "private": false,
+  "description": "Companion formatting rules and tests for the FART citation style",
+  "main": "companion/fart-rules.js",
+  "scripts": {
+    "test": "node --test companion/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
