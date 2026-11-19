@@ -289,7 +289,7 @@
                   <name and="text" name-as-sort-order="all" initialize="true" initialize-with=""/>
                   <label form="short" prefix=" (" suffix=")"/>
                 </names>
-                <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" quotes="true"/></group>
+                <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" quotes="true" text-case="lowercase"/></group>
               </group>
               <text macro="publisher-place"/>
               <text variable="page" prefix="pp. "/>
@@ -378,8 +378,9 @@
           <else-if type="song">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
+              <names variable="author" delimiter=", "><name and="text"/></names>
+              <text variable="number" prefix="Episode "/>
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
@@ -387,9 +388,11 @@
           <else-if type="speech">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              
               <text variable="genre"/>
+              <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="event-title" font-style="italic"/></group>
+              <text variable="event-place"/>
               <text variable="publisher"/>
+              <text macro="access-date"/>
             </group>
           </else-if>
           <else-if type="motion_picture">
