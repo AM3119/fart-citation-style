@@ -9,9 +9,9 @@
     <id>http://www.zotero.org/styles/fart</id>
     <link href="http://www.zotero.org/styles/fart" rel="self"/>
     <rights license="https://creativecommons.org/licenses/by-sa/4.0/">FART project draft. Creative Commons Attribution-ShareAlike 4.0 International.</rights>
-    <summary>Experimental multidisciplinary author-date style. Draft 0.2; companion tooling is required for some rules.</summary>
+    <summary>Experimental multidisciplinary author-date style. Draft 0.3; schema repair in progress.</summary>
     <title>FART — Fancy Academic Reference Thingy</title>
-    <updated>2026-11-19T00:00:00+00:00</updated>
+    <updated>2026-11-19T17:00:00+01:00</updated>
   </info>
 
   <locale xml:lang="en-US">
