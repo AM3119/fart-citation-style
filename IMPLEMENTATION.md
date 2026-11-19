@@ -2,51 +2,41 @@
 
 ## Current status
 
-The project is in the specification and prototype stage. The initial CSL scaffold is experimental and has not yet been validated against the official CSL schema or tested comprehensively in Zotero. Do not describe it as release-ready.
+Draft 0.2 of `fart.csl` is now committed. It is an initial CSL implementation, not a release candidate. Local checks performed so far include XML parsing and basic macro-reference/structure checks. It has **not** yet been validated against the official CSL 1.0.2 schema or tested inside Zotero/citeproc-js.
 
-## Architecture
+## Implemented in the CSL draft
 
-The intended deliverable is a small, reusable project with:
+- Author–date citations, with multiple cited items separated by semicolons.
+- Bibliography ordered by citation number (first-citation order).
+- Surname plus initials in the bibliography, with no periods after initials.
+- “and friends” for three or more authors in citations and bibliography.
+- Year-only issued dates.
+- Conventional CSL year suffixes (a/b/c) as a temporary compatibility behavior.
+- Full `container-title` for journal names, italicized; volume bold; issue and page/number fields.
+- Book publisher/place, edition, ISBN; chapter editors and page range.
+- Software version; patent and legal-document branches.
+- DOI first, otherwise URL, otherwise exact fallback `I guess.`
+- PMID and PMCID; website access-date wording `Last time I checked:`.
 
-1. A Zotero-compatible CSL style for the subset of FART that CSL can express reliably.
-2. A companion formatter or metadata-preparation tool for behavior CSL cannot reliably implement, especially alternating character case and conversational duplicate-year suffixes.
-3. A documented mapping from the FART editorial specification to Zotero item types and CSL variables.
-4. A fixture-based test suite with expected citations and bibliography entries.
-5. Installation, usage, limitations, and contribution documentation.
+## Known gaps
 
-The companion component must not silently alter source metadata. Any transformed output should be reproducible and traceable to the original Zotero fields.
+CSL 1.0.2 does not provide a general-purpose character transformation, so alternating character case is not implemented in this stylesheet. The requested conversational duplicate-year suffixes cannot be emitted as arbitrary dynamic strings by ordinary CSL; the draft currently uses conventional year suffixes. Zotero/CSL item types also merge several distinctions FART wants to make: for example, broadcasts include podcasts, video recordings overlap with films, and speech can represent presentations or posters. Labels that depend on these distinctions are therefore deferred to companion tooling rather than guessed in the CSL file.
 
-## Technical constraints to investigate
+Other deferred behavior includes abstract/preprint/review-status labels, corrected/retracted labels, social-media-versus-forum classification, anonymous-personal-communication attribution, AI model metadata, dreams, and individual/collective thoughts. The style should not apply a label when the Zotero item type cannot identify the category unambiguously.
 
-- CSL has limited support for arbitrary character-by-character title transformations.
-- CSL disambiguation is designed around conventional author/year disambiguation, not arbitrary conversational suffix text.
-- Bibliography ordering by first citation appearance may depend on citation-number behavior and processor support.
-- Zotero item types do not necessarily map one-to-one to every FART category.
-- Labels for overlapping statuses (for example, preprint plus not peer reviewed) need deterministic precedence.
+## Next engineering steps
 
-## Development sequence
-
-1. Validate the existing CSL scaffold against the official CSL schema.
-2. Test installation and rendering in Zotero with a minimal fixture library.
-3. Build a mapping table for every supported Zotero item type.
-4. Implement the CSL-expressible rules.
-5. Implement and test companion transformations for rules outside CSL.
-6. Add regression fixtures for citations, bibliography order, special labels, missing identifiers, and duplicate author–year groups.
-7. Add continuous integration for schema validation and tests.
-8. Publish versioned releases with a changelog and an open-source licence.
+1. Validate `fart.csl` against the official CSL 1.0.2 schema.
+2. Install and render it in Zotero; fix all processor/schema errors.
+3. Create representative Zotero test records and golden output fixtures.
+4. Build a deterministic companion formatter for alternating case, custom duplicate-year suffixes, and FART-only labels.
+5. Preserve source metadata and make all transformations reproducible.
+6. Add automated tests, CI, contribution guidance, and release notes.
 
 ## Release acceptance criteria
 
-A release candidate should not be called stable until:
-- The CSL file validates against the current official CSL schema.
-- Zotero installs and renders the style without errors.
-- Every documented supported item type has at least one fixture.
-- Citation and bibliography output matches checked-in expected output.
-- Missing DOI/URL behavior is tested.
-- Duplicate-year behavior is deterministic.
-- Known CSL limitations and companion-tool requirements are clearly documented.
-- The project has a licence, contribution guidance, and versioned release notes.
+Do not call a release stable until the CSL validates against the official schema, installs and renders in Zotero, has fixtures for each supported item type, matches checked-in golden output, has deterministic duplicate-year handling, and documents its limitations and companion-tool requirements.
 
 ## Publication pathway
 
-A software paper or metapaper may be considered for a software-focused journal once the package is genuinely reusable, documented, tested, openly licensed, and released. Publication suitability and acceptance are not guaranteed by the existence of a CSL file alone.
+A software paper or metapaper may be considered once the package is genuinely reusable, documented, tested, openly licensed, and released. Publication suitability and acceptance are not guaranteed by the existence of a CSL file alone.
