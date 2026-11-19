@@ -9,9 +9,9 @@
     <id>http://www.zotero.org/styles/fart-redesign-09</id>
     <link href="http://www.zotero.org/styles/fart-redesign-09" rel="self"/>
     <rights license="https://creativecommons.org/licenses/by-sa/4.0/">FART project draft. Creative Commons Attribution-ShareAlike 4.0 International.</rights>
-    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.9.</summary>
+    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.10.</summary>
     <title>FART — Fancy Academic Reference Thingy</title>
-    <updated>2026-11-19T19:30:00+01:00</updated>
+    <updated>2026-11-19T20:15:00+01:00</updated>
   </info>
 
   <locale xml:lang="en-US">
@@ -36,16 +36,25 @@
   </macro>
 
   <macro name="author-long">
-    <names variable="author" delimiter=", ">
-      <name and="text" delimiter-precedes-last="never" et-al-min="4" et-al-use-first="3"/>
-      <substitute>
-        <names variable="editor" delimiter=", ">
+    <choose>
+      <if type="personal_communication">
+        <names variable="author" delimiter=", ">
           <name and="text" delimiter-precedes-last="never" et-al-min="4" et-al-use-first="3"/>
-          <label form="short" prefix=" (" suffix=")"/>
         </names>
-        <text variable="title"/>
-      </substitute>
-    </names>
+      </if>
+      <else>
+        <names variable="author" delimiter=", ">
+          <name and="text" delimiter-precedes-last="never" et-al-min="4" et-al-use-first="3"/>
+          <substitute>
+            <names variable="editor" delimiter=", ">
+              <name and="text" delimiter-precedes-last="never" et-al-min="4" et-al-use-first="3"/>
+              <label form="short" prefix=" (" suffix=")"/>
+            </names>
+            <text variable="title"/>
+          </substitute>
+        </names>
+      </else>
+    </choose>
   </macro>
 
   <macro name="issued-year">
