@@ -8,7 +8,7 @@ A multidisciplinary author–date citation style and companion tooling project.
 
 ## Try it in Zotero
 
-This is an experimental redesign. Revalidate and test it with representative Zotero records before using it in a live manuscript. Installation instructions:
+This is an experimental redesign. The core author/title/source/DOI format has been visually confirmed in Google Docs. The companion rules have automated unit tests, but they are not yet wired into Zotero's Google Docs citation integration. Revalidate and test each Zotero item type before using it in a live manuscript. Installation instructions:
 
 1. Download [fart.csl](fart.csl).
 2. In Zotero, open **Settings/Preferences → Cite → Styles**.
