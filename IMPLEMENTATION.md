@@ -1,46 +1,48 @@
-# FART implementation audit — redesign 0.7
+# FART implementation audit — redesign 0.9
 
-This audit distinguishes tested output from code that merely exists. A rule is not implemented until a representative Zotero item has been rendered and checked.
+## Confirmed in Google Docs
+- Bold **Formulated by:**, **Published on:**, **Hereby dubbed:**, **Brought to you by:**.
+- First three bibliography authors in full; additional authors become `and friends`.
+- Lowercase titles, bold volume, AC year marker, DOI label.
+- In-text 3+ author abbreviation.
 
-## Confirmed by the user's Google Docs screenshot
+## CSL behavior in the current file
+- Multiple in-text citations use `and also`.
+- Bibliography sorting uses citation-number (first-citation order).
+- `Status` is rendered verbatim from Zotero Extra. This supports explicit FART labels but does not automatically verify a source's status.
+- PMID/PMCID prefix is conditional on at least one identifier being present.
+- DOI receives **Fancy identifier:**; URL-only references print the URL; no DOI/URL prints `I guess.`.
+- Blog/webpage, forum/social post, preprint/manuscript, thesis, podcast/song, presentation/speech, and film/motion-picture branches exist. Zotero's mappings are not one-to-one for several types, so ambiguous cases should use explicit `Status` labels rather than inferred labels.
 
-- Bold Formulated by:, Hereby dubbed:, and Brought to you by:.
-- Full given names for the first three bibliography authors, then and friends.
-- Lowercase titles.
-- Bold volume numbers.
-- AC after the year.
-- Bold Fancy identifier: before DOI.
-- In-text and friends for three or more authors.
+## Explicit Zotero metadata conventions
+Use a separate line in Extra:
+- Retracted: `Status: [Oops]`
+- Corrected: `Status: [Corrected]`
+- Not peer reviewed: `Status: [Not peer reviewed yet]`
+- Preprint: `Status: [Only a preprint tho]`
+- Both: `Status: [Only a preprint tho] [Not peer reviewed yet]`
+- AI-generated: `Status: [AI slop]`
+- Dream: `Status: [It came to me in a dream]`
+- Individual thought: `Status: [I thunk this]`
+- Collective thought: `Status: [We thunk this]`
+- Anonymous personal communication: `Status: [Somebody who definitely exists]`
+- Video when Zotero maps it to the same CSL type as film: `Status: [Someone made a video]`
+- Poster when mapped as a presentation: `Status: [Only a poster tho]`
+- Dissertation when Zotero's generic Thesis type is used: `Status: [Some dissertation of a sort]`
+- Abstract: `Status: [Only the abstract tho]`
+- Social media when it is not mapped to CSL `post`: `Status: [Someone's an influencer]`
+- Conference presentation: `Status: [Only a conference presentation tho]`
 
-## Fixes in redesign 0.7
+Zotero's Extra field supports CSL variables such as Status, PMID, and PMCID. The style prints the literal Status value. This is user-supplied classification, not automatic verification.
 
-- For the quacks: is now conditional on PMID or PMCID being present.
-- Fancy identifier: now appears before DOI only. A URL-only reference prints its URL without the DOI-specific label.
-- Blog/webpage references and forum/social posts have separate branches: webpage gets [oh a blogger!]; post gets [Someone's an influencer]; newspaper and magazine articles no longer receive the blogger label by default.
+## Companion module
+- Provides deterministic AC/BC year rendering from signed years.
+- Provides the conversational duplicate-year suffix algorithm.
+- Provides helper functions for full bibliography author names, in-text citations, special labels, and an HTML bibliography entry.
+- Includes Node test cases and a GitHub Actions workflow.
 
-These are code-level corrections; the new branches still require Zotero rendering tests against real Blog Post, Webpage, Forum Post, Magazine Article, and Newspaper Article items.
+## Not yet integrated end-to-end
+The companion module is not a Zotero plugin and is not called by Zotero's Google Docs integration. Its BC-year and custom duplicate-suffix behavior therefore does not automatically replace CSL output in Google Docs. A Zotero plugin or supported word-processor integration is required to connect those transformations while preserving citation field codes. Zotero's plugin documentation describes the client plugin APIs and word-processor integration as separate extension points: https://www.zotero.org/support/dev/client_coding/plugin_development.
 
-## Known features not yet implemented
-
-- [Oops] / [Corrected]: not implemented. CSL can test whether status exists, but cannot compare its value to retracted or corrected. A generic status check would mislabel items marked in press or forthcoming. Requires companion integration or an explicit structured metadata mechanism.
-- [Not peer reviewed yet] and [Only a preprint tho]: not implemented. Need a deterministic metadata convention and duplicate-label ordering.
-- Abstract, conference presentation, poster, thesis, and dissertation labels: not implemented.
-- Podcast, film, and video labels: not implemented safely. Zotero's item-type-to-CSL mapping must be tested before applying labels; generic fallback types can collapse distinct Zotero item types.
-- AI-generated content, dreams, individual/collective thoughts, and anonymous personal communications: not implemented.
-- Software-specific formatting: not implemented.
-- Custom duplicate-year phrases: not implemented; ordinary CSL year suffixes remain.
-- BC dates: not implemented; current CSL hardcodes AC.
-- Bold date prefix: pending the user's exact wording.
-- PMID/PMCID display, ISBN, book/chapter formats, citation-order bibliography, and and also: require dedicated output fixtures beyond the user's current screenshot.
-
-## Retraction metadata
-
-Zotero documents Status as a CSL variable that can be entered in Extra, with examples including in press. CSL conditional tests can test variable presence, not equality to a particular string. Therefore do not use an if-variable-status condition to emit [Oops]: it would falsely label non-retracted statuses.
-
-Official references:
-- https://www.zotero.org/support/kb/item_types_and_fields
-- https://citationstyles.org/downloads/specification.html
-
-## Release gate
-
-No release is complete until the CSL passes the official validator, each Zotero item type has a representative rendered fixture, every special label has a positive and negative test, Google Docs output matches golden expected output, and companion-dependent behavior is tested through its actual integration.
+## Validation
+The current 0.9 CSL has not yet been rerun through the official validator after the latest changes. Passing schema validation also does not prove every Zotero item-type branch renders correctly. Rendered fixtures are required for that.
