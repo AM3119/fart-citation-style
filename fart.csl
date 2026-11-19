@@ -47,9 +47,14 @@
   <macro name="author-long">
     <choose>
       <if type="personal_communication">
-        <names variable="author" delimiter=", ">
-          <name and="text" delimiter-precedes-last="never" et-al-min="4" et-al-use-first="3"/>
-        </names>
+        <choose>
+          <if variable="author">
+            <names variable="author" delimiter=", ">
+              <name and="text" delimiter-precedes-last="never" et-al-min="4" et-al-use-first="3"/>
+            </names>
+          </if>
+          <else><text value="[Somebody who definitely exists]"/></else>
+        </choose>
       </if>
       <else>
         <names variable="author" delimiter=", ">
