@@ -48,7 +48,9 @@ function authorsText(authors = []) {
     const family = person.family || "";
     return [given, family].filter(Boolean).join(" ").trim();
   }).filter(Boolean);
-  if (authors.length > 3) names.push("and friends");
+  if (authors.length > 3) {
+    return names.length ? `${names.join(", ")}, and friends` : "and friends";
+  }
   if (names.length === 2) return names.join(" and ");
   if (names.length > 2) return `${names.slice(0, -1).join(", ")}, and ${names.at(-1)}`;
   return names[0] || "Somebody";
