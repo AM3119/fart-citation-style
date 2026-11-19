@@ -79,9 +79,9 @@ Use the following exact labels where the corresponding item type applies:
 | Anonymous personal communication | `[Somebody who definitely exists]` |
 
 - A publication not yet peer reviewed uses `[Not peer reviewed yet]`. This may apply to preprints and accepted-but-not-formally-published work.
-- Retracted items must still record the actual retraction status/date when known. In Zotero's Extra field, set the CSL variable Status to the exact label [Oops].
-- Corrected items should retain the correction information where available. In Zotero's Extra field, set Status to [Corrected].
-- Other explicit status labels may be supplied through Status, including [Not peer reviewed yet] and [Only a preprint tho]; combine labels in the same value when both apply.
+- Retracted items must still record the actual retraction status/date when known. In Zotero's Extra field, set the CSL variable `Status` to the exact label `[Oops]`. The CSL prints the supplied Status text; it does not independently verify the retraction.
+- Corrected items should retain the correction information where available. In Zotero's Extra field, set `Status` to `[Corrected]`.
+- Other special labels not reliably distinguishable from Zotero item types can be supplied through `Status`, including `[Not peer reviewed yet]`, `[Only a preprint tho]`, `[AI slop]`, `[It came to me in a dream]`, `[I thunk this]`, `[We thunk this]`, and `[Somebody who definitely exists]`. Combine applicable labels in the same value, separated by spaces. These are explicit metadata labels, not automatic classification.
 - Open-access publications receive no special label.
 - News articles follow the ordinary format appropriate to their venue.
 - Forum threads use the ordinary website format.
@@ -89,7 +89,7 @@ Use the following exact labels where the corresponding item type applies:
 - Patents have their own reference format.
 - Legislation, regulations, and court judgments have their own legal-document formats.
 
-**Open implementation issue:** The interaction between `[Only a preprint tho]` and `[Not peer reviewed yet]` needs a fixed ordering and duplicate-label rule.
+**Metadata convention:** When both preprint and non-peer-reviewed labels apply, use `Status: [Only a preprint tho] [Not peer reviewed yet]` in that order.
 
 ## 7. Software
 
