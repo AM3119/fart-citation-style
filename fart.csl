@@ -189,7 +189,10 @@
           <else-if type="personal_communication">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[Somebody who definitely exists]"/>
+              <choose>
+                <if variable="author"><names variable="author"><name and="text" delimiter=", "/></names></if>
+                <else><text value="[Somebody who definitely exists]"/></else>
+              </choose>
               <text variable="medium"/>
               <text variable="genre"/>
             </group>
