@@ -18,7 +18,7 @@
 - Three or more authors: (Smith and friends, 2026).
 - Separate multiple citations in one parenthesis with the exact phrase "and also".
 - Bibliography order follows the order in which references first appear in the text, not alphabetical order.
-- Publication dates are represented by year only for ordinary publications. CSL's native BC handling is retained; the locale's AD term is rendered as AC. CSL does not expose a reliable condition for appending AC to all four-digit CE years while excluding BCE years, so this exact all-years AC requirement remains a known CSL-only limitation.
+- Publication dates are represented by year only for ordinary publications. CSL's native BC handling is retained; the locale's AD term is rendered as AD. CSL does not expose a reliable condition for appending AD to all four-digit CE years while excluding BCE years, so this exact all-years AD requirement remains a known CSL-only limitation.
 - Page numbers for direct quotations are optional.
 - Retain complete author metadata in the underlying reference record even when the rendered citation abbreviates the author group.
 
