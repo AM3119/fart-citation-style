@@ -82,13 +82,10 @@
   <macro name="fart-status">
     <choose>
       <if variable="status"><text variable="status"/></if>
-      <else-if type="manuscript"><text value="[Only a preprint tho]"/></else-if>
       <else-if type="thesis"><text value="[Some thesis of a sort]"/></else-if>
       <else-if type="song"><text value="[Yap]"/></else-if>
-      <else-if type="post"><text value="[Someone's an influencer]"/></else-if>
       <else-if type="post-weblog"><text value="[oh a blogger!]"/></else-if>
-      <else-if type="speech paper-conference"><text value="[Only a conference presentation tho]"/></else-if>
-      <else-if type="motion_picture"><text value="[Someone made a movie]"/></else-if>
+      <else-if type="speech"><text value="[Only a conference presentation tho]"/></else-if>
     </choose>
   </macro>  <macro name="citation-year">
     <group delimiter="">
