@@ -20,7 +20,7 @@ node --test
 
 ## Important integration limitation
 
-This is a companion library, not yet a Zotero plugin and not automatically invoked by Zotero's Google Docs integration. It can be used by a future Zotero plugin or export workflow. The current CSL remains the live style for Zotero citations. Do not replace Zotero-generated bibliographies with this renderer in an active manuscript until a tested integration preserves citation-field links and update behavior.
+This is a companion library, not yet a Zotero plugin and not automatically invoked by Zotero's Google Docs integration. The CSL handles the core format and explicit Status labels; this module supplies BC-era year rendering and conversational duplicate-year suffixes for a future integration. It can be used by a future Zotero plugin or export workflow. The current CSL remains the live style for Zotero citations. Do not replace Zotero-generated bibliographies with this renderer in an active manuscript until a tested integration preserves citation-field links and update behavior.
 
 ## Input shape
 
