@@ -10,7 +10,7 @@ This is a living specification. Items marked **Open implementation issue** are e
 - In-text citations use parentheses: `(Smith, 2026)`.
 - Two authors: `(Smith and Jones, 2026)`.
 - Three or more authors: `(Smith and friends, 2026)`.
-- Separate multiple citations in one parenthesis with semicolons.
+- Separate multiple citations in one parenthesis with the exact phrase `and also`.
 - Bibliography order follows the order in which references first appear in the text, not alphabetical order.
 - Publication dates are represented by year only for ordinary publications.
 - Page numbers for direct quotations are optional.
@@ -18,22 +18,24 @@ This is a living specification. Items marked **Open implementation issue** are e
 
 ## 2. Author names
 
-- Render names as surname followed by initials, without periods: `Smith JA`, `Al Mahrizi AD`.
-- For three or more authors, render the first author followed by `and friends` in citations and bibliography.
+- In the bibliography, prepend **Formulated by:** to the author list.
+- Render the first three authors using their full names (given name(s) and surname); if there are more than three authors, follow the first three with `and friends`.
+- Retain compact author–date names in in-text citations; the full-name rule applies to bibliography author lists unless a later decision explicitly changes this.
 - Preserve all authors in stored metadata.
 
 ## 3. Titles and publication details
 
-- Article titles and published book titles use alternating character case, beginning with lowercase: `tHe EfFeCtS...`.
-- Podcast episode titles and video titles also use alternating character case.
-- Book chapter titles retain conventional capitalization.
+- Remove capitalization from titles: render titles in lowercase throughout, including article, book, podcast episode, and video titles.
+- Prepend **Hereby dubbed:** to every applicable title.
+- Prepend **Brought to you by:** to journal names and equivalent source/venue names where applicable.
 - Article and book titles appear in quotation marks.
 - Journal names use their full official titles, are italicized, and are never abbreviated.
+- Cited blog posts and non-academic articles carry the exact label `[oh a blogger!]`.
 - Volume numbers are bold.
 - Include issue numbers when available.
 - Software names retain their official capitalization.
 
-**Open implementation issue:** Character-by-character alternating case is not reliably expressible in ordinary CSL. The implementation may require a companion formatter or a preprocessing workflow. The rendered output must be deterministic and must not corrupt acronyms, proper nouns, or non-Latin scripts.
+**Implementation note:** CSL supports lowercase title casing for many fields. Special source classification (particularly distinguishing blogs/non-academic articles from scholarly web publications) may require explicit Zotero item metadata or companion tooling.
 
 ## 4. Identifiers and links
 
@@ -101,8 +103,9 @@ Software has its own reference format. Include:
 
 - Cite individual podcast episodes, not the podcast series as a whole.
 - Podcast references use the exact label `[Yap]`.
+- Podcast episode titles are lowercase and introduced by **Hereby dubbed:**; the show/source is introduced by **Brought to you by:** where applicable.
 - Include show, host, episode information, and date where available.
-- Video titles use alternating character case.
+- Video titles are lowercase and introduced by **Hereby dubbed:**.
 - Social media references include display name and username/handle.
 - Deleted or inaccessible social posts may be cited when an archived copy exists; include original and archive URLs where available.
 - AI-generated references identify the tool/model when known and the human author/publisher when provided. ChatGPT conversations are included; record provider, model, date, title, and URL where available.
@@ -135,6 +138,13 @@ The word `btw` is always lowercase.
 - Do not invent missing bibliographic data.
 - Where a field is unavailable, follow the explicit fallback rules above.
 
-## 12. Scope and quality goals
+## 12. Rendering language
+
+- In bibliography entries, use the exact bold prefix **Formulated by:** before authors.
+- Use the exact bold prefix **Hereby dubbed:** before titles.
+- Use the exact bold prefix **Brought to you by:** before journal or equivalent source names.
+- Multiple in-text citations are joined by `and also`.
+
+## 13. Scope and quality goals
 
 FART is intended to be a useful, reusable, multidisciplinary citation style, not merely a joke stylesheet. The implementation must document unsupported cases, test against representative Zotero item types, and distinguish style rules from features requiring companion software.
