@@ -2,7 +2,7 @@
 
 ## Architectural decision
 
-FART is one standalone CSL 1.0.2 style. No companion package, Zotero plugin, external formatter, or bibliography post-processing is part of the project.
+FART is one standalone CSL 1.0 style, targeting the CSL 1.0.2 specification. No companion package, Zotero plugin, external formatter, or bibliography post-processing is part of the project.
 
 ## Implemented in the CSL draft
 
