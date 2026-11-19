@@ -5,11 +5,11 @@ Each test needs a Zotero item, expected in-text citation, expected bibliography 
 ## Core
 - One, two, three, and four-plus authors.
 - Full first three author names in bibliography.
-- Multiple citations separated by and also.
+- Multiple citations separated by "and also".
 - Bibliography ordered by first citation appearance.
-- Duplicate author/year pairs, at least three.
+- Duplicate author/year pairs, at least three; expect standard a, b, c suffixes.
 - AC and BC dates.
-- Bold date prefix once wording is decided.
+- Bold date prefix and all required typography.
 
 ## Bibliographic fields
 - DOI, URL-only, neither.
@@ -34,3 +34,5 @@ Each test needs a Zotero item, expected in-text citation, expected bibliography 
 
 ## Rule
 A special label must have at least one positive and one negative test. Do not infer a label from an ambiguous generic item type.
+
+All tests are performed against the standalone CSL file in Zotero's Style Editor/preview and then confirmed in Google Docs.
