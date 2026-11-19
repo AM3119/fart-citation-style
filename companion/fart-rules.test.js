@@ -1,7 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const {
-  authorsText, duplicateYearSuffix, formatCitation, normalizeLabels, renderBibliographyItem, yearWithEra
+  authorsText, duplicateYearSuffix, formatCitation, formatCitations, normalizeLabels, renderBibliographyItem, yearWithEra
 } = require("./fart-rules");
 
 test("year era handles CE and BCE", () => {
@@ -68,4 +68,12 @@ test("software title capitalization is preserved", () => {
     version:"1.0"
   });
   assert.match(html, /“RStudio”/);
+});
+
+test("multiple citations are joined with and also", () => {
+  const items = [
+    {author:[{family:"Smith"}], year:2024},
+    {author:[{family:"Jones"}], year:2025}
+  ];
+  assert.equal(formatCitations(items), "(Smith, 2024 AC) and also (Jones, 2025 AC)");
 });
