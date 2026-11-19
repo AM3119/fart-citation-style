@@ -4,7 +4,7 @@ A multidisciplinary author–date citation style and companion tooling project.
 
 ## Current status
 
-**Redesign draft 0.6.** The style has been revised around the new FART editorial rules: lowercase titles, bold declaration-style prefixes, `and also` between multiple citations, full names for the first three bibliography authors, `AC` year markers, and labeled DOI/PubMed identifiers. These changes are not yet revalidated or fully tested across Zotero item types.
+**Redesign draft 0.6.** The style has been revised around the new FART editorial rules: lowercase titles, bold declaration-style prefixes, `and also` between multiple citations, full names for the first three bibliography authors, `AC` year markers, and labeled DOI/PubMed identifiers. These changes are still experimental. The Google Docs screenshot confirms the core author/title/source/DOI formatting; the remaining item-type branches require rendered fixtures. For retraction/correction labels, use the explicit Status convention documented in SPECIFICATION.md.
 
 ## Try it in Zotero
 
