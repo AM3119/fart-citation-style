@@ -72,6 +72,10 @@ function formatCitation(item, sameAuthorYearIndex = 0) {
   return `(${author}, ${year}${suffix ? `. ${suffix}` : ""})`;
 }
 
+function formatCitations(items = []) {
+  return items.map(item => formatCitation(item, item.sameAuthorYearIndex || 0)).join(" and also ");
+}
+
 function normalizeLabels(labels = []) {
   const seen = new Set();
   return labels.filter(label => {
@@ -118,6 +122,7 @@ module.exports = {
   citationAuthorText,
   duplicateYearSuffix,
   formatCitation,
+  formatCitations,
   normalizeLabels,
   renderBibliographyItem,
   yearWithEra
