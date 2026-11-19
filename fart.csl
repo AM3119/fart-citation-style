@@ -9,9 +9,9 @@
     <id>http://www.zotero.org/styles/fart</id>
     <link href="http://www.zotero.org/styles/fart" rel="self"/>
     <rights license="https://creativecommons.org/licenses/by-sa/4.0/">FART project draft. Creative Commons Attribution-ShareAlike 4.0 International.</rights>
-    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.5.</summary>
+    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.6.</summary>
     <title>FART — Fancy Academic Reference Thingy</title>
-    <updated>2026-11-19T17:00:00+01:00</updated>
+    <updated>2026-11-19T17:30:00+01:00</updated>
   </info>
 
   <locale xml:lang="en-US">
@@ -51,6 +51,7 @@
   <macro name="issued-year">
     <group delimiter="">
       <date variable="issued"><date-part name="year"/></date>
+      <text value=" AC"/>
       <text variable="year-suffix"/>
     </group>
   </macro>
@@ -80,15 +81,28 @@
 
   <macro name="identifiers">
     <group delimiter="; ">
-      <text variable="PMID" prefix="PMID "/>
-      <text variable="PMCID" prefix="PMCID "/>
+      <group delimiter="; ">
+        <text value="For the quacks:" font-weight="bold"/>
+        <text variable="PMID" prefix="PMID "/>
+        <text variable="PMCID" prefix="PMCID "/>
+      </group>
     </group>
   </macro>
 
   <macro name="doi-or-url">
     <choose>
-      <if variable="DOI"><text variable="DOI" prefix="https://doi.org/"/></if>
-      <else-if variable="URL"><text variable="URL"/></else-if>
+      <if variable="DOI">
+        <group delimiter=" ">
+          <text value="Fancy identifier:" font-weight="bold"/>
+          <text variable="DOI" prefix="https://doi.org/"/>
+        </group>
+      </if>
+      <else-if variable="URL">
+        <group delimiter=" ">
+          <text value="Fancy identifier:" font-weight="bold"/>
+          <text variable="URL"/>
+        </group>
+      </else-if>
       <else><text value="I guess."/></else>
     </choose>
   </macro>
@@ -111,7 +125,10 @@
   <macro name="publisher-place">
     <group delimiter=": ">
       <text variable="publisher-place"/>
-      <text variable="publisher"/>
+      <group delimiter=" ">
+        <text value="Brought to you by:" font-weight="bold"/>
+        <text variable="publisher"/>
+      </group>
     </group>
   </macro>
 
