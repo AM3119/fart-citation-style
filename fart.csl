@@ -65,7 +65,7 @@
   <macro name="journal-title">
     <group delimiter=" ">
       <text value="Brought to you by:" font-weight="bold"/>
-      <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
+      <text variable="container-title" font-style="italic"/>
     </group>
   </macro>
 
@@ -132,7 +132,7 @@
         <text macro="author-long"/>
         <text macro="issued-year"/>
         <choose>
-          <if type="article-journal article-magazine article-newspaper review">
+          <if type="article-journal review">
             <group delimiter=" ">
               <text macro="title-quoted"/>
               <text macro="journal-title"/>
@@ -186,7 +186,7 @@
           </else-if>
           <else-if type="legislation regulation bill treaty">
             <group delimiter=" ">
-              <text variable="title" font-style="italic"/>
+              <group delimiter=" "><text value="Hereby dubbed:" font-weight="bold"/><text variable="title" font-style="italic" text-case="lowercase"/></group>
               <text variable="authority"/>
               <text variable="number"/>
             </group>
@@ -209,7 +209,7 @@
             <group delimiter=" ">
               <text macro="title-quoted"/>
               <text value="[oh a blogger!]"/>
-              <text variable="container-title" font-style="italic"/>
+              <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text macro="access-date"/>
             </group>
           </else-if>
@@ -219,7 +219,7 @@
               <names variable="host" delimiter=", ">
                 <name and="text" initialize="true" initialize-with=""/>
               </names>
-              <text variable="container-title" font-style="italic"/>
+              <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
@@ -235,7 +235,7 @@
           <else>
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text variable="container-title" font-style="italic"/>
+              <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text variable="publisher"/>
               <text variable="publisher-place"/>
             </group>
