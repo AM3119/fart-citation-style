@@ -2,27 +2,23 @@
 
 A multidisciplinary author–date citation style and companion tooling project.
 
-## Current release state
+## Current status
 
-**Draft 0.2 — experimental.** The repository now includes an initial Zotero CSL style. It implements the core author–date structure, semicolon-separated citation groups, citation-order bibliography, author initials, “and friends”, year-only dates, journal formatting, book/chapter/software/legal/patent branches, DOI/URL fallback, PMID/PMCID/ISBN output, and website access-date wording.
+**Draft 0.3 — validation repair in progress.** The first installation attempt exposed a CSL schema error. Draft 0.2 incorrectly declared the root style version as `1.0.2`; CSL 1.0.2 styles must still use `version="1.0"` in the XML root. The locale also used an invalid plural-term declaration for editors and pages.
 
-It is **not yet a validated or stable release**. Some editorial rules need companion software because CSL cannot reliably distinguish overlapping Zotero item categories or generate the requested transformations. See [IMPLEMENTATION.md](IMPLEMENTATION.md).
+Those two issues have now been corrected in `fart.csl`. This is a repair draft, **not yet certified by the official validator or tested in Zotero**.
 
 ## Try it in Zotero
 
-1. Download [fart.csl](fart.csl) from this repository.
+Please wait for the next validation pass before installing this repair draft. Once the official CSL validator accepts it, the instructions will be:
+
+1. Download [fart.csl](fart.csl).
 2. In Zotero, open **Settings/Preferences → Cite → Styles**.
 3. Drag the downloaded `.csl` file into the Styles list (or use the add-style control).
 4. Select **FART — Fancy Academic Reference Thingy** in your word processor's citation style selector.
-
-Use a test document first. Do not use this draft for a submission until it has been validated and its output checked.
 
 ## Project documents
 
 - [Specification](SPECIFICATION.md)
 - [Implementation plan and limitations](IMPLEMENTATION.md)
 - [Test coverage plan](tests/README.md)
-
-## Contributing
-
-Please report incorrect output with a minimal Zotero item example and the expected FART rendering. Do not include private library data.
