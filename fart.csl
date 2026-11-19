@@ -7,7 +7,7 @@
     <author><name>FART project contributors</name></author>
     <category citation-format="author-date"/>
     <id>http://www.zotero.org/styles/fart-redesign-09</id>
-    <link href="http://www.zotero.org/styles/fart-redesign-06" rel="self"/>
+    <link href="http://www.zotero.org/styles/fart-redesign-09" rel="self"/>
     <rights license="https://creativecommons.org/licenses/by-sa/4.0/">FART project draft. Creative Commons Attribution-ShareAlike 4.0 International.</rights>
     <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.9.</summary>
     <title>FART — Fancy Academic Reference Thingy</title>
@@ -61,8 +61,12 @@
     <text variable="status"/>
   </macro>
 
-  <macro name="status-label">
-    <text variable="status"/>
+  <macro name="citation-year">
+    <group delimiter="">
+      <date variable="issued"><date-part name="year"/></date>
+      <text value=" AC"/>
+      <text variable="year-suffix"/>
+    </group>
   </macro>
 
   <macro name="title-quoted">
@@ -144,7 +148,7 @@
     <layout prefix="(" suffix=")" delimiter=" and also ">
       <group delimiter=", ">
         <text macro="author-short"/>
-        <text macro="issued-year"/>
+        <text macro="citation-year"/>
       </group>
     </layout>
   </citation>
