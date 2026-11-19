@@ -9,7 +9,7 @@
     <id>http://www.zotero.org/styles/fart</id>
     <link href="http://www.zotero.org/styles/fart" rel="self"/>
     <rights license="https://creativecommons.org/licenses/by-sa/4.0/">FART project draft. Creative Commons Attribution-ShareAlike 4.0 International.</rights>
-    <summary>Experimental multidisciplinary author-date style. Draft 0.3; schema repair in progress.</summary>
+    <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.5.</summary>
     <title>FART — Fancy Academic Reference Thingy</title>
     <updated>2026-11-19T17:00:00+01:00</updated>
   </info>
@@ -37,10 +37,10 @@
 
   <macro name="author-long">
     <names variable="author" delimiter=", ">
-      <name and="text" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" name-as-sort-order="all" sort-separator=" " initialize="true" initialize-with=""/>
+      <name and="text" delimiter-precedes-last="never" et-al-min="4" et-al-use-first="3"/>
       <substitute>
         <names variable="editor" delimiter=", ">
-          <name and="text" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" name-as-sort-order="all" sort-separator=" " initialize="true" initialize-with=""/>
+          <name and="text" delimiter-precedes-last="never" et-al-min="4" et-al-use-first="3"/>
           <label form="short" prefix=" (" suffix=")"/>
         </names>
         <text variable="title"/>
@@ -56,11 +56,17 @@
   </macro>
 
   <macro name="title-quoted">
-    <text variable="title" quotes="true"/>
+    <group delimiter=" ">
+      <text value="Hereby dubbed:" font-weight="bold"/>
+      <text variable="title" quotes="true" text-case="lowercase"/>
+    </group>
   </macro>
 
   <macro name="journal-title">
-    <text variable="container-title" font-style="italic"/>
+    <group delimiter=" ">
+      <text value="Brought to you by:" font-weight="bold"/>
+      <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
+    </group>
   </macro>
 
   <macro name="volume-issue-pages">
@@ -110,7 +116,7 @@
   </macro>
 
   <citation disambiguate-add-year-suffix="true">
-    <layout prefix="(" suffix=")" delimiter="; ">
+    <layout prefix="(" suffix=")" delimiter=" and also ">
       <group delimiter=", ">
         <text macro="author-short"/>
         <text macro="issued-year"/>
@@ -119,8 +125,10 @@
   </citation>
 
   <bibliography hanging-indent="true">
+    <sort><key variable="citation-number"/></sort>
     <layout suffix=".">
       <group delimiter=" ">
+        <text value="Formulated by:" font-weight="bold"/>
         <text macro="author-long"/>
         <text macro="issued-year"/>
         <choose>
@@ -148,7 +156,7 @@
                   <name and="text" name-as-sort-order="all" initialize="true" initialize-with=""/>
                   <label form="short" prefix=" (" suffix=")"/>
                 </names>
-                <text variable="container-title" quotes="true"/>
+                <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" quotes="true"/></group>
               </group>
               <text macro="publisher-place"/>
               <text variable="page" prefix="pp. "/>
@@ -156,7 +164,7 @@
           </else-if>
           <else-if type="software">
             <group delimiter=" ">
-              <text variable="title" quotes="true"/>
+              <group delimiter=" "><text value="Hereby dubbed:" font-weight="bold"/><text variable="title" quotes="true" text-case="lowercase"/></group>
               <text variable="version" prefix="version "/>
               <text variable="publisher"/>
             </group>
@@ -170,7 +178,7 @@
           </else-if>
           <else-if type="legal_case">
             <group delimiter=" ">
-              <text variable="title" font-style="italic"/>
+              <group delimiter=" "><text value="Hereby dubbed:" font-weight="bold"/><text variable="title" font-style="italic" text-case="lowercase"/></group>
               <text variable="authority"/>
               <text variable="number"/>
               <text variable="page"/>
@@ -197,9 +205,10 @@
               <text variable="publisher"/>
             </group>
           </else-if>
-          <else-if type="post webpage">
+          <else-if type="post webpage article-magazine article-newspaper">
             <group delimiter=" ">
               <text macro="title-quoted"/>
+              <text value="[oh a blogger!]"/>
               <text variable="container-title" font-style="italic"/>
               <text macro="access-date"/>
             </group>
