@@ -11,7 +11,7 @@
     <rights license="https://creativecommons.org/licenses/by-sa/4.0/">FART project draft. Creative Commons Attribution-ShareAlike 4.0 International.</rights>
     <summary>Experimental multidisciplinary author-date style. FART redesign draft 0.11.</summary>
     <title>FART — Fancy Academic Reference Thingy</title>
-    <updated>2026-11-19T20:45:00+01:00</updated>
+    <updated>2026-11-19T21:05:00+01:00</updated>
   </info>
 
   <locale xml:lang="en-US">
@@ -223,7 +223,7 @@
           <else-if type="paper-conference">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              
+
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="event-title" font-style="italic"/></group>
               <text variable="publisher-place"/>
               <text variable="page" prefix="pp. "/>
@@ -240,7 +240,7 @@
           <else-if type="post-weblog">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              
+
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text macro="access-date"/>
             </group>
@@ -317,7 +317,7 @@
           <else-if type="thesis">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              
+
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
@@ -325,7 +325,7 @@
           <else-if type="manuscript">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              
+
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
@@ -333,7 +333,7 @@
           <else-if type="webpage">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              
+
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text macro="access-date"/>
             </group>
@@ -341,7 +341,7 @@
           <else-if type="post">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              
+
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text macro="access-date"/>
             </group>
@@ -349,7 +349,7 @@
           <else-if type="article-magazine">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              
+
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text macro="access-date"/>
             </group>
@@ -376,7 +376,6 @@
             <group delimiter=" ">
               <text macro="title-quoted"/>
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
-              <names variable="author" delimiter=", "><name and="text"/></names>
               <text variable="number" prefix="Episode "/>
               <text variable="genre"/>
               <text variable="publisher"/>
@@ -395,7 +394,7 @@
           <else-if type="motion_picture">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              
+
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
