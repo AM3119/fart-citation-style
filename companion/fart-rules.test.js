@@ -1,7 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const {
-  authorsText, duplicateYearSuffix, normalizeLabels, renderBibliographyItem, yearWithEra
+  authorsText, duplicateYearSuffix, formatCitation, normalizeLabels, renderBibliographyItem, yearWithEra
 } = require("./fart-rules");
 
 test("year era handles CE and BCE", () => {
@@ -48,4 +48,24 @@ test("renderer includes prefixes and conditional identifiers", () => {
   assert.match(html, /\[Oops\]/);
   assert.match(html, /<b>Fancy identifier:<\/b>/);
   assert.doesNotMatch(html, /For the quacks/);
+});
+
+test("in-text citations use author-date and conversational duplicate suffixes", () => {
+  const item = {
+    author: [{family:"Smith"}, {family:"Jones"}, {family:"Brown"}],
+    year: 2026
+  };
+  assert.equal(formatCitation(item), "(Smith and friends, 2026 AC)");
+  assert.equal(formatCitation(item, 1), "(Smith and friends, 2026 AC. The other one btw)");
+});
+
+test("software title capitalization is preserved", () => {
+  const html = renderBibliographyItem({
+    itemType:"software",
+    author:[{given:"Ada",family:"Lovelace"}],
+    title:"RStudio",
+    year:2024,
+    version:"1.0"
+  });
+  assert.match(html, /“RStudio”/);
 });
