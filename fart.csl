@@ -1,6 +1,6 @@
-<?xml version="1.0.2" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl"
-       version="1.0"
+       version="1.0.2"
        class="in-text"
        default-locale="en-US">
   <info>
@@ -86,7 +86,6 @@
       <else-if type="motion_picture"></else-if>
     </choose>
   </macro>
-
   <macro name="citation-year">
     <group delimiter="">
       <date variable="issued"><date-part name="year"/></date>
@@ -201,7 +200,6 @@
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="publisher"/></group>
               <text variable="publisher-place"/>
               <text variable="genre"/>
-              <text variable="version" prefix="Version "/>
             </group>
           </else-if>
           <else-if type="dataset">
@@ -224,7 +222,7 @@
           <else-if type="paper-conference">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[Only a conference presentation tho]"/>
+              
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="event-title" font-style="italic"/></group>
               <text variable="publisher-place"/>
               <text variable="page" prefix="pp. "/>
@@ -241,7 +239,7 @@
           <else-if type="post-weblog">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[oh a blogger!]"/>
+              
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text macro="access-date"/>
             </group>
@@ -318,7 +316,7 @@
           <else-if type="thesis">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[Some thesis of a sort]"/>
+              
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
@@ -326,7 +324,7 @@
           <else-if type="manuscript">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[Only a preprint tho]"/>
+              
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
@@ -334,7 +332,7 @@
           <else-if type="webpage">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[oh a blogger!]"/>
+              
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text macro="access-date"/>
             </group>
@@ -342,7 +340,7 @@
           <else-if type="post">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[Someone's an influencer]"/>
+              
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text macro="access-date"/>
             </group>
@@ -350,7 +348,7 @@
           <else-if type="article-magazine">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[oh a blogger!]"/>
+              
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text macro="access-date"/>
             </group>
@@ -376,7 +374,7 @@
           <else-if type="song">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[Yap]"/>
+              
               <group delimiter=" "><text value="Brought to you by:" font-weight="bold"/><text variable="container-title" font-style="italic"/></group>
               <text variable="genre"/>
               <text variable="publisher"/>
@@ -385,7 +383,7 @@
           <else-if type="speech">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[Only a conference presentation tho]"/>
+              
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
@@ -393,7 +391,7 @@
           <else-if type="motion_picture">
             <group delimiter=" ">
               <text macro="title-quoted"/>
-              <text value="[Someone made a movie]"/>
+              
               <text variable="genre"/>
               <text variable="publisher"/>
             </group>
