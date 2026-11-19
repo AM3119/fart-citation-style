@@ -56,6 +56,22 @@ function authorsText(authors = []) {
   return names[0] || "Somebody";
 }
 
+function citationAuthorText(authors = []) {
+  if (!authors.length) return "Somebody";
+  if (authors.length === 1) return authors[0].family || authors[0].literal || "Somebody";
+  if (authors.length === 2) {
+    return [authors[0].family, authors[1].family].filter(Boolean).join(" and ");
+  }
+  return `${authors[0].family || authors[0].literal || "Somebody"} and friends`;
+}
+
+function formatCitation(item, sameAuthorYearIndex = 0) {
+  const author = citationAuthorText(item.author || []);
+  const year = yearWithEra(item.year);
+  const suffix = duplicateYearSuffix(sameAuthorYearIndex);
+  return `(${author}, ${year}${suffix ? `. ${suffix}` : ""})`;
+}
+
 function normalizeLabels(labels = []) {
   const seen = new Set();
   return labels.filter(label => {
@@ -68,13 +84,17 @@ function normalizeLabels(labels = []) {
 
 function renderBibliographyItem(item, options = {}) {
   const author = authorsText(item.author || []);
-  const title = String(item.title || "untitled").toLowerCase();
+  const rawTitle = String(item.title || "untitled");
+  const title = item.itemType === "software" ? rawTitle : rawTitle.toLowerCase();
   const year = yearWithEra(item.year);
   const labels = normalizeLabels(item.labels || []);
   const duplicate = duplicateYearSuffix(options.sameAuthorYearIndex || 0);
   const venue = item["container-title"] || item.publisher || "";
   const doi = item.DOI ? `<b>Fancy identifier:</b> https://doi.org/${escapeHTML(String(item.DOI).replace(/^https?:\/\/doi\.org\//, ""))}` : "";
-  const pmid = item.PMID ? `<b>For the quacks:</b> PMID ${escapeHTML(item.PMID)}` : "";
+  const pmidParts = [];
+  if (item.PMID) pmidParts.push(`PMID ${escapeHTML(item.PMID)}`);
+  if (item.PMCID) pmidParts.push(`PMCID ${escapeHTML(item.PMCID)}`);
+  const pmid = pmidParts.length ? `<b>For the quacks:</b> ${pmidParts.join("; ")}` : "";
   const p = [];
   p.push(`<b>Formulated by:</b> ${escapeHTML(author)}`);
   if (year) p.push(`<b>Published on:</b> ${escapeHTML(year)}${duplicate ? ` (${escapeHTML(duplicate)})` : ""}`);
@@ -82,6 +102,9 @@ function renderBibliographyItem(item, options = {}) {
   if (venue) p.push(`<b>Brought to you by:</b> <i>${escapeHTML(venue)}</i>`);
   if (item.volume) p.push(`<b>${escapeHTML(item.volume)}</b>${item.issue ? `(${escapeHTML(item.issue)})` : ""}${item.page ? `: ${escapeHTML(item.page)}` : ""}`);
   if (labels.length) p.push(labels.map(escapeHTML).join(" "));
+  if (item.accessed) p.push(`Last time I checked: ${escapeHTML(item.accessed)}`);
+  if (item.ISBN) p.push(`ISBN ${escapeHTML(item.ISBN)}`);
+  if (item.version) p.push(`version ${escapeHTML(item.version)}`);
   if (pmid) p.push(pmid);
   if (doi) p.push(doi);
   else if (item.URL) p.push(escapeHTML(item.URL));
@@ -92,7 +115,9 @@ function renderBibliographyItem(item, options = {}) {
 module.exports = {
   LABELS,
   authorsText,
+  citationAuthorText,
   duplicateYearSuffix,
+  formatCitation,
   normalizeLabels,
   renderBibliographyItem,
   yearWithEra
