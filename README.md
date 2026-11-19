@@ -8,7 +8,7 @@ FART will not require a companion package, plugin, external formatter, or post-p
 
 ## Current status
 
-**Experimental draft 0.13 — not yet complete or release-ready.** The current style has visually demonstrated its core author/title/source/DOI formatting in Google Docs. The CSL has been expanded to version 1.0.2 with native branches for additional source types and centralized Status-label overrides. XML well-formedness has been checked, but official CSL schema validation and complete Zotero/Google Docs rendering tests remain outstanding. The AD/BC formatting requirement also has a documented CSL limitation.
+**Experimental draft 0.14 — not yet complete or release-ready.** The current style has visually demonstrated its core author/title/source/DOI formatting in Google Docs. The CSL has been expanded to version 1.0.2 with native branches for additional source types and centralized Status-label overrides. XML well-formedness has been checked, but official CSL schema validation and complete Zotero/Google Docs rendering tests remain outstanding. The AD/BC formatting requirement also has a documented CSL limitation.
 
 ## Install for testing
 
