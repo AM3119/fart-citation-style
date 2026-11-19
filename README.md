@@ -4,13 +4,11 @@ A multidisciplinary author–date citation style and companion tooling project.
 
 ## Current status
 
-**Draft 0.3 — validation repair in progress.** The first installation attempt exposed a CSL schema error. Draft 0.2 incorrectly declared the root style version as `1.0.2`; CSL 1.0.2 styles must still use `version="1.0"` in the XML root. The locale also used an invalid plural-term declaration for editors and pages.
-
-Those two issues have now been corrected in `fart.csl`. This is a repair draft, **not yet certified by the official validator or tested in Zotero**.
+**Redesign draft 0.5.** The style has been revised around the new FART editorial rules: lowercase titles, bold declaration-style prefixes, `and also` between multiple citations, full names for the first three bibliography authors, and the `[oh a blogger!]` label for non-academic online writing. These changes are not yet revalidated or fully tested across Zotero item types.
 
 ## Try it in Zotero
 
-Please wait for the next validation pass before installing this repair draft. Once the official CSL validator accepts it, the instructions will be:
+This is an experimental redesign. Revalidate and test it with representative Zotero records before using it in a live manuscript. Installation instructions:
 
 1. Download [fart.csl](fart.csl).
 2. In Zotero, open **Settings/Preferences → Cite → Styles**.
